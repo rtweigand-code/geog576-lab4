@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Lab 4 Test</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>AGOL Collector</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.26/"></script>
+
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 30px;">
-  <p>If you can read this, Pages is serving my index.html.</p>
+
+<body>
+  <div id="viewDiv"></div>
+
+  <script>
+    require([
+      "esri/config",
+      "esri/Map",
+      "esri/views/MapView"
+    ], function (esriConfig, Map, MapView) {
+
+      // my api key
+      esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurEzkBozXZgPgjPozCzklawWD863C9mArHp4QeXfLaiy8L2BJTmm_eFlkRBmh-rS8f86DIaVxCZv1qDyzDjRyrQtKAoG97CplbDXiwWMA2bYqtEAxH9-MHlA3tDGSjUp93BMOHIaqXguOZxzW8cFVKszpoaoEbOPaECd9FiSLY6Rg-2FBhrb9bssxhS2Mh6EcsLusRR-qwO3qSJK5S8_0-lU3r-pdC0akyfo2hyekjELXAT1_Mj7DoXAA";
+
+      const map = new Map({
+        basemap: "satellite"
+      });
+
+      const view = new MapView({
+        container: "viewDiv",
+        map: map,
+
+        // challenge 1 (lab 4 part 3)
+        center: [-89.4012, 43.0731], // [lon, lat] (Madison)
+        zoom: 12
+      });
+
+    });
+  </script>
 </body>
 </html>
