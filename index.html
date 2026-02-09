@@ -15,10 +15,33 @@
       height: 100%;
       width: 100%;
     }
+
+    /* add record button */
+    .addRecordBtn {
+      position: absolute;
+      z-index: 10;
+      top: 10px;
+      right: 10px;
+      background-color: #0079c1;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .addRecordBtn:hover {
+      background-color: #005a87;
+    }
   </style>
 </head>
 
 <body>
+  <!-- lab 4 part 8 -->
+  <a href="https://arcg.is/1n98eX1" target="_blank" class="addRecordBtn">Add Record</a>
+
   <div id="viewDiv"></div>
 
   <script>
@@ -35,6 +58,15 @@
 
       const map = new Map({
         basemap: "satellite"
+      });
+
+      // lab 4 part 7: survey results layer
+      require(["esri/layers/FeatureLayer"], function (FeatureLayer) {
+        const surveyLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_ad97872e362843a7a2a982cb81480fb3/FeatureServer/0"
+        });
+
+        map.add(surveyLayer);
       });
 
       const view = new MapView({
